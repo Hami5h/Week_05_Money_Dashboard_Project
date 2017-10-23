@@ -3,20 +3,20 @@
 <table>
   <thead>
   <tr>
-    <td>Merchant ID</td>
+    <td>Merchant Name</td>
     <td>Amount Spent</td>
+
   </tr>
 </thead>
 <tbody>
   <% for transaction in @transactions %>
   <tr>
-    <td><%= transaction.merchant_id %></td>
+    <td><%= transaction.merchant.name %></td>
     <td> £<%= transaction.amount %></td>
   </tr>
   <% end %>
 </tbody>
   <tfoot>
     <td>Total Spent = £<%=@total%></td>
-    <td>Merchant Name is <%@merchant%></td>
   </tfoot>
 </table>

@@ -8,7 +8,7 @@ require_relative( '../models/transaction.rb' )
 get '/transactions' do
   @transactions = Transaction.all()
   @total = Transaction.total()
-  @merchant = merchant.name()
+  # @merchant = Transaction.merchant()
   #binding.pry
   erb ( :"transactions/index" )
 end

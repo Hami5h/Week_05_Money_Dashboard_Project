@@ -78,4 +78,12 @@ class Transaction
     return results.first["sum"]
   end
 
+  def merchant()
+    sql = "SELECT * FROM merchants
+    WHERE id = $1"
+    values = [@merchant_id]
+    results = SqlRunner.run( sql, values )
+    return Merchant.new( results.first )
+  end
+
 end
