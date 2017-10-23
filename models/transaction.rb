@@ -1,6 +1,6 @@
 require_relative( '../db/sql_runner' )
 
-class Transacation
+class Transaction
 
   attr_reader(:amount, :merchant_id, :tag_id, :id)
 
@@ -21,5 +21,12 @@ class Transacation
   results = SqlRunner.run(sql, values)
   @id = results.first()['id'].to_i
 end
+
+def self.all()
+    sql = "SELECT * FROM transactions"
+    values = []
+    results = SqlRunner.run( sql, values )
+    return results.map { |transaction| Transaction.new(transaction) }
+  end
 
 end

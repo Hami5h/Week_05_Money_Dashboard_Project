@@ -1,6 +1,7 @@
-require_relative( '../models/merchant.rb' )
-require_relative( '../models/tag.rb' )
-require_relative( '../models/transaction.rb' )
+require_relative( '../models/merchant.rb')
+require_relative( '../models/tag.rb')
+require_relative( '../models/transaction.rb')
+require('pry-byebug')
 
 merchant1 = Merchant.new({
   'name' => "Tesco",
@@ -37,30 +38,33 @@ tag4 = Tag.new({
 tag4.save()
 
 
-transaction1 = Transacation.new({
+transaction1 = Transaction.new({
   'amount' => 140,
   'merchant_id' => merchant1.id,
   'tag_id' => tag1.id,
 })
 transaction1.save()
 
-transaction2 = Transacation.new({
+transaction2 = Transaction.new({
   'amount' => 125,
   'merchant_id' => merchant2.id,
   'tag_id' => tag2.id,
 })
 transaction2.save()
 
-transaction3 = Transacation.new({
+transaction3 = Transaction.new({
   'amount' => 80,
   'merchant_id' => merchant1.id,
   'tag_id' => tag3.id,
 })
 transaction3.save()
 
-transaction4 = Transacation.new({
+transaction4 = Transaction.new({
   'amount' => 180,
   'merchant_id' => merchant2.id,
   'tag_id' => tag4.id,
 })
 transaction4.save()
+
+binding.pry
+nil
