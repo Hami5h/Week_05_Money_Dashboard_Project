@@ -1,4 +1,4 @@
-require_relative( '../db/sql_runner' )
+require_relative('../db/sql_runner')
 
 class Transaction
 
@@ -38,10 +38,35 @@ class Transaction
   end
 
   def self.total()
-    sql = "SELECT SUM(amount) as sum FROM transactions"
+    sql = "SELECT SUM(amount) FROM transactions"
     values = []
     results = SqlRunner.run(sql, values)
-    return results.first["sum"].to_i
+    return results.first["sum"]
   end
+
+  def self.total_by_tag_type(type)
+    sql = "SELECT SUM(transactions.amount)
+    FROM tags
+    INNER JOIN transactions
+    ON transactions.tag_id = tags.id
+    WHERE type = $1"
+    values = [type]
+    results = SqlRunner.run(sql, values)
+    return results.first["sum"]
+
+  end
+
+  def self.total_by_tag_name(name)
+    sql = "SELECT SUM(transactions.amount)
+    FROM tags
+    INNER JOIN transactions
+    ON transactions.tag_id = tags.id
+    WHERE name = $1"
+    values = [name]
+    results = SqlRunner.run(sql, values)
+    return results.first["sum"]
+  end
+
+
 
 end
