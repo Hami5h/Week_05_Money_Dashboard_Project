@@ -67,6 +67,15 @@ class Transaction
     return results.first["sum"]
   end
 
-
+  def self.total_by_merchant(name)
+    sql = "SELECT SUM(transactions.amount)
+    FROM merchants
+    INNER JOIN transactions
+    ON transactions.merchant_id = merchants.id
+    WHERE name = $1"
+    values = [name]
+    results = SqlRunner.run(sql, values)
+    return results.first["sum"]
+  end
 
 end
