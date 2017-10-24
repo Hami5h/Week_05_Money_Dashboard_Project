@@ -6,23 +6,25 @@
 
 <table>
   <thead>
-  <tr>
-    <td>Merchant Name</td>
-    <td>Item</td>
-    <td>Type</td>
-    <td>Amount Spent</td>
-  </tr>
-</thead>
-<tbody>
-  <% for transaction in @transactions %>
-  <tr>
-    <td><%= transaction.merchant.name %></td>
-    <td><%= transaction.tag.name %></td>
-    <td><%= transaction.tag.type %></td>
-    <td> £<%= transaction.amount %></td>
-  </tr>
-  <% end %>
-</tbody>
+    <tr>
+      <th>Merchant Name</th>
+      <th>Item</th>
+      <th>Type</th>
+      <th>Amount Spent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for transaction in @transactions %>
+    <tr>
+      <td><%= transaction.merchant.name %></td>
+      <td><%= transaction.tag.name %></td>
+      <td>
+          <a class="btn btn--action" href="/transactions/<%= transaction.tag.type %>"><%= transaction.tag.type %></a>
+      </td>
+      <td> £<%= transaction.amount %></td>
+    </tr>
+    <% end %>
+  </tbody>
   <tfoot>
     <td>Total Spent = £<%=@total%></td>
   </tfoot>
