@@ -20,7 +20,7 @@ end
 get '/transactions/:type' do
   @transactions = Transaction.tag_type(params[:type])
   @total = Transaction.total_by_tag_type(params[:type])
-  erb (:"transactions/index")
+  erb (:"transactions/filtered")
 end
 
 post '/transactions' do
