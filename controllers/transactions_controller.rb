@@ -17,17 +17,33 @@ get '/transactions/new' do
   erb (:"transactions/new")
 end
 
+post '/transactions' do
+  @transaction = Transaction.new(params)
+  @transaction.save
+  erb(:"transactions/create")
+end
+
 get '/transactions/:type' do
   @transactions = Transaction.tag_type(params[:type])
   @total = Transaction.total_by_tag_type(params[:type])
   erb (:"transactions/filtered")
 end
 
-post '/transactions' do
-  @transaction = Transaction.new(params)
-  @transaction.save
-  erb(:"transactions/create")
+get '/transactions/:id/update' do
+  @transactions = Transaction.find(params[:id])
+  @tags = Tag.all()
+  @merchants = Merchant.all()
+  erb(:"transactions/update")
 end
+
+post '/transactions/:id/update' do
+  @transactions = Transaction.find(params[:id])
+  @tags = Tag.all()
+  @merchants = Merchant.all()
+  Transaction.new(params).update
+  redirect to("/transactions")
+end
+
 
 post '/transactions/:id/delete' do
   @transactions = Transaction.find(params[:id])

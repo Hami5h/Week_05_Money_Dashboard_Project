@@ -50,3 +50,7 @@ tfoot td {
   background-color: #CFD8DC;
 
 }
+
+form {
+  display: inline;
+}

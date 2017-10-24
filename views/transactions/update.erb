@@ -1,4 +1,4 @@
-<form method="post" action="/transactions">
+<form method="post" action="/transactions/<%= @transactions.id %>/update">
 
   <label for="merchant-amount"> Amount Spent: </label>
   <input
@@ -27,6 +27,6 @@
   id="purchased-item"
   />
 
-  <input type="submit" value="Create">
+  <input type="submit" value="Update">
 
 </form>
