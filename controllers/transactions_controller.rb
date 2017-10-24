@@ -28,3 +28,9 @@ post '/transactions' do
   @transaction.save
   erb(:"transactions/create")
 end
+
+post '/transactions/:id/delete' do
+  @transactions = Transaction.find(params[:id])
+  @transactions.delete
+  redirect to("/transactions")
+end
