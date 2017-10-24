@@ -8,7 +8,11 @@ require_relative( '../models/transaction.rb' )
 get '/transactions' do
   @transactions = Transaction.all()
   @total = Transaction.total()
-  # @merchant = Transaction.merchant()
-  #binding.pry
   erb ( :"transactions/index" )
+end
+
+get '/transactions/:type' do
+  @transactions = Transaction.tag_type(params[:type])
+  @total = Transaction.total_by_tag_type(params[:type])
+  erb (:"transactions/index")
 end

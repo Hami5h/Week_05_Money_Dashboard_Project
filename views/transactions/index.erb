@@ -4,14 +4,17 @@
   <thead>
   <tr>
     <td>Merchant Name</td>
+    <td>Item</td>
+    <td>Type</td>
     <td>Amount Spent</td>
-
   </tr>
 </thead>
 <tbody>
   <% for transaction in @transactions %>
   <tr>
     <td><%= transaction.merchant.name %></td>
+    <td><%= transaction.tag.name %></td>
+    <td><%= transaction.tag.type %></td>
     <td> £<%= transaction.amount %></td>
   </tr>
   <% end %>

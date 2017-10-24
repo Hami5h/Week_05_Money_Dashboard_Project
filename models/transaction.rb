@@ -46,11 +46,11 @@ class Transaction
 
   def self.total_by_tag_type(type)
     sql = "SELECT SUM(transactions.amount)
-    FROM tags
-    INNER JOIN transactions
+    FROM transactions
+    INNER JOIN tags
     ON transactions.tag_id = tags.id
     WHERE type = $1"
-    values = [type]
+    values = [type.capitalize]
     results = SqlRunner.run(sql, values)
     return results.first["sum"]
 
@@ -62,7 +62,7 @@ class Transaction
     INNER JOIN transactions
     ON transactions.tag_id = tags.id
     WHERE name = $1"
-    values = [name]
+    values = [name.capitalize]
     results = SqlRunner.run(sql, values)
     return results.first["sum"]
   end
@@ -73,7 +73,7 @@ class Transaction
     INNER JOIN transactions
     ON transactions.merchant_id = merchants.id
     WHERE name = $1"
-    values = [name]
+    values = [name.capitalize]
     results = SqlRunner.run(sql, values)
     return results.first["sum"]
   end
@@ -84,6 +84,25 @@ class Transaction
     values = [@merchant_id]
     results = SqlRunner.run( sql, values )
     return Merchant.new( results.first )
+  end
+
+  def tag()
+    sql = "SELECT * FROM tags
+    WHERE id = $1"
+    values = [@tag_id]
+    results = SqlRunner.run( sql, values )
+    return Tag.new( results.first )
+  end
+
+  def self.tag_type(type)
+    sql = "SELECT transactions.*
+    FROM transactions
+    INNER JOIN tags
+    ON transactions.tag_id = tags.id
+    WHERE type = $1"
+    values = [type.capitalize]
+    results = SqlRunner.run(sql, values)
+    return results.map { |transaction| Transaction.new(transaction) }
   end
 
 end
