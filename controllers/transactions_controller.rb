@@ -11,8 +11,20 @@ get '/transactions' do
   erb ( :"transactions/index" )
 end
 
+get '/transactions/new' do
+  @tags = Tag.all()
+  @merchants = Merchant.all()
+  erb (:"transactions/new")
+end
+
 get '/transactions/:type' do
   @transactions = Transaction.tag_type(params[:type])
   @total = Transaction.total_by_tag_type(params[:type])
   erb (:"transactions/index")
+end
+
+post '/transactions' do
+  @transaction = Transaction.new(params)
+  @transaction.save
+  erb(:"transactions/create")
 end

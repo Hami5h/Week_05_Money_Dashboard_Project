@@ -1,0 +1,30 @@
+<form method="post" action="/transactions">
+
+  <label for="merchant-amount"> Amount Spent: </label>
+  <input
+  type="text"
+  name="amount"
+  id="merchant-amount"
+  />
+
+  <select id="merchant-id" name="merchant_id">
+    <% @merchants.each do |merchant| %>
+      <option value="<%= merchant.id %>"> <%= merchant.name %></option>
+    <%end%>
+  </select>
+
+  <select id="tag-id" name="tag_id">
+    <option value="1"> Food </option>
+    <option value="2"> Clothing </option>
+  </select>
+
+  <label for="purchased-item"> Item: </label>
+  <input
+  type="text"
+  name="tag"
+  id="purchased-item"
+  />
+
+  <input type="submit" value="Create">
+
+</form>

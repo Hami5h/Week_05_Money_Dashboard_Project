@@ -16,6 +16,6 @@ CREATE TABLE tags(
 CREATE TABLE transactions(
   id SERIAL8 primary key,
   amount INT8,
-  merchant_id INT8 references merchants(id),
-  tag_id INT8 references tags(id)
+  merchant_id INT8 references merchants(id) ON DELETE CASCADE,
+  tag_id INT8 references tags(id) ON DELETE CASCADE
 );
