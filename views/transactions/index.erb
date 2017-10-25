@@ -1,7 +1,7 @@
 <h1>Transactions</h1>
 
-<p class="btn--wrapper">
-  <a class="btn btn--action" href="/transactions/new">New transaction</a>
+<p class="btn_wrapper">
+  <a class="btn_action" href="/transactions/new">New transaction</a>
 </p>
 
 <table>
@@ -17,9 +17,9 @@
     <% for transaction in @transactions %>
     <tr>
       <td><%= transaction.merchant.name %></td>
-      <td><%= transaction.tag.name %></td>
+      <td><%= transaction.item_name %></td>
       <td>
-          <a class="btn btn--action" href="/transactions/<%= transaction.tag.type %>"><%= transaction.tag.type %></a>
+          <a class="btn_action" href="/transactions/<%= transaction.tag.item_type %>"><%= transaction.tag.item_type %></a>
       </td>
       <td> £<%= transaction.amount %></td>
     </tr>
@@ -30,9 +30,9 @@
   </tfoot>
 </table>
 
-<p class="btn--wrapper">
-  <a class="btn btn--action" href="/transactions/clothing">Clothes Spending</a>
+<p class="btn_wrapper">
+  <a class="btn_action" href="/transactions/clothing">Clothes Spending</a>
 </p>
-<p class="btn--wrapper">
-  <a class="btn btn--action" href="/transactions/food">Food Spending</a>
+<p class="btn_wrapper">
+  <a class="btn_action" href="/transactions/food">Food Spending</a>
 </p>

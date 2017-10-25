@@ -3,22 +3,23 @@ require_relative('../db/sql_runner')
 class Transaction
 
   attr_reader(:id)
-  attr_accessor(:amount, :merchant_id, :tag_id)
+  attr_accessor(:amount, :item_name, :merchant_id, :tag_id)
 
   def initialize( options )
     @id = options['id'].to_i if options['id']
     @amount = options['amount'].to_i
+    @item_name = options['item_name']
     @merchant_id = options['merchant_id'].to_i
     @tag_id = options['tag_id'].to_i
   end
 
   def save()
     sql = "INSERT INTO transactions
-    (amount, merchant_id, tag_id)
+    (amount, item_name, merchant_id, tag_id)
     VALUES
-    ($1, $2, $3)
+    ($1, $2, $3, $4)
     RETURNING id"
-    values = [@amount, @merchant_id, @tag_id]
+    values = [@amount, @item_name, @merchant_id, @tag_id]
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
   end
@@ -50,7 +51,7 @@ class Transaction
     FROM transactions
     INNER JOIN tags
     ON transactions.tag_id = tags.id
-    WHERE type = $1"
+    WHERE item_type = $1"
     values = [type.capitalize]
     results = SqlRunner.run(sql, values)
     return results.first["sum"]
@@ -100,7 +101,7 @@ class Transaction
     FROM transactions
     INNER JOIN tags
     ON transactions.tag_id = tags.id
-    WHERE type = $1"
+    WHERE item_type = $1"
     values = [type.capitalize]
     results = SqlRunner.run(sql, values)
     return results.map { |transaction| Transaction.new(transaction) }
@@ -108,9 +109,9 @@ class Transaction
 
   def update()
     sql = "UPDATE transactions
-    SET (amount, merchant_id, tag_id) = ($1, $2, $3)
-    WHERE id = $4"
-    values = [@amount, @merchant_id, @tag_id, @id]
+    SET (amount, item_name, merchant_id, tag_id) = ($1, $2, $3, $4)
+    WHERE id = $5"
+    values = [@amount, @item_name, @merchant_id, @tag_id, @id]
     SqlRunner.run(sql, values)
   end
 

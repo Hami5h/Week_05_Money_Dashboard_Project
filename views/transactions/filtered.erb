@@ -1,7 +1,7 @@
 <h1>Purchases</h1>
 
-<p class="btn--wrapper">
-  <a class="btn btn--action" href="/transactions">Home</a>
+<p class="btn_wrapper">
+  <a class="btn_action" href="/transactions">Home</a>
 </p>
 
 <table>
@@ -18,16 +18,16 @@
     <% for transaction in @transactions %>
     <tr>
       <td><%= transaction.merchant.name %></td>
-      <td><%= transaction.tag.name %></td>
-      <td><%= transaction.tag.type %></td>
+      <td><%= transaction.item_name %></td>
+      <td><%= transaction.tag.item_type %></td>
       <td> £<%= transaction.amount %></td>
       <td>
         <form action="/transactions/<%= transaction.id %>/delete" method="POST">
-          <input class="btn btn--action" type="submit" value="delete" />
+          <input class="btn_action" type="submit" value="delete" />
         </form>
-        <a href="/transactions/<%= transaction.id %>/update">update</a>
-
-        
+        <form action="/transactions/<%= transaction.id %>/update" method="GET">
+          <input class="btn_action" type="submit" value="update" />
+        </form>
       </td>
       </tr>
       <% end %>
@@ -37,9 +37,9 @@
     </tfoot>
   </table>
 
-<p class="btn--wrapper">
-  <a class="btn btn--action" href="/transactions/clothing">Clothes Spending</a>
+<p class="btn_wrapper">
+  <a class="btn_action" href="/transactions/clothing">Clothes Spending</a>
 </p>
-<p class="btn--wrapper">
-  <a class="btn btn--action" href="/transactions/food">Food Spending</a>
+<p class="btn_wrapper">
+  <a class="btn_action" href="/transactions/food">Food Spending</a>
 </p>

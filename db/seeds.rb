@@ -16,46 +16,45 @@ merchant2 = Merchant.new({
 merchant2.save()
 
 tag1 = Tag.new({
-  'name' => "Coffee",
-  'type' => "Food",
+  'item_type' => "Electrical",
 })
 tag1.save()
 
 tag2 = Tag.new({
-  'name' => "Tea",
-  'type' => "Food",
+  'item_type' => "Beauty",
 })
 tag2.save()
 
 tag3 = Tag.new({
-  'name' => "Sugar",
-  'type' => "Food",
+  'item_type' => "Food",
 })
 tag3.save()
 
 tag4 = Tag.new({
-  'name' => "Jeans",
-  'type' => "Clothing",
+  'item_type' => "Clothing",
   })
 tag4.save()
 
 
 transaction1 = Transaction.new({
-  'amount' => 140,
+  'amount' => 14,
+  'item_name' => "Coffee",
   'merchant_id' => merchant1.id,
-  'tag_id' => tag1.id,
+  'tag_id' => tag3.id,
 })
 transaction1.save()
 
 transaction2 = Transaction.new({
-  'amount' => 125,
+  'amount' => 12,
+  'item_name' => "Tea",
   'merchant_id' => merchant2.id,
-  'tag_id' => tag2.id,
+  'tag_id' => tag3.id,
 })
 transaction2.save()
 
 transaction3 = Transaction.new({
-  'amount' => 80,
+  'amount' => 3,
+  'item_name' => "Sugar",
   'merchant_id' => merchant1.id,
   'tag_id' => tag3.id,
 })
@@ -63,6 +62,7 @@ transaction3.save()
 
 transaction4 = Transaction.new({
   'amount' => 180,
+  'item_name' => "Jeans",
   'merchant_id' => merchant2.id,
   'tag_id' => tag4.id,
 })

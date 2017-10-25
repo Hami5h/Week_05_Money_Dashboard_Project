@@ -9,13 +9,13 @@ CREATE TABLE merchants(
 
 CREATE TABLE tags(
   id SERIAL8 primary key,
-  name VARCHAR(255) not null,
-  type VARCHAR(255)
+  item_type VARCHAR(255)
 );
 
 CREATE TABLE transactions(
   id SERIAL8 primary key,
   amount INT8,
+  item_name VARCHAR(255) not null,
   merchant_id INT8 references merchants(id) ON DELETE CASCADE,
   tag_id INT8 references tags(id) ON DELETE CASCADE
 );

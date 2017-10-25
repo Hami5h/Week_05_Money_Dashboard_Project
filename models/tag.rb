@@ -2,21 +2,20 @@ require_relative( '../db/sql_runner' )
 
 class Tag
 
-  attr_reader(:name, :type, :id)
+  attr_reader(:item_type, :id)
 
   def initialize( options )
     @id = options['id'].to_i if options['id']
-    @name = options['name']
-    @type = options['type']
+    @item_type = options['item_type']
   end
 
   def save()
     sql = "INSERT INTO tags
-    (name, type)
+    (item_type)
     VALUES
-    ($1, $2)
+    ($1)
     RETURNING id"
-    values = [@name, @type]
+    values = [@item_type]
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
   end

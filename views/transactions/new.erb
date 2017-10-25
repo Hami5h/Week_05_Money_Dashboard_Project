@@ -10,20 +10,21 @@
   <label for="merchant-id"> Merchant </label>
   <select id="merchant-id" name="merchant_id">
     <% @merchants.each do |merchant| %>
-      <option value="<%= merchant.id %>"> <%= merchant.name %></option>
+    <option value="<%= merchant.id %>"> <%= merchant.name %></option>
     <%end%>
   </select>
 
-<label for="tag-id"> Type </label>
+  <label for="tag-id"> Type </label>
   <select id="tag-id" name="tag_id">
-    <option value="1"> Food </option>
-    <option value="2"> Clothing </option>
+    <% @tags.each do |tag| %>
+    <option value="<%= tag.id %>"> <%= tag.item_type %></option>
+    <%end%>
   </select>
 
-  <label for="purchased-item"> Item: </label>
+  <label for="purchased-item"> Product: </label>
   <input
   type="text"
-  name="tag"
+  name="item_name"
   id="purchased-item"
   />
 
