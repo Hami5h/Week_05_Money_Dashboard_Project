@@ -1,12 +1,29 @@
 <h1>Merchants</h1>
 
+<p class="btn_wrapper">
+  <a class="btn_action" href="/merchants/new">New merchant</a>
+</p>
+
 <table>
   <tr>
     <th>Name</th>
+    <th>Maintenance</th>
   </tr>
   <% for merchant in @merchants %>
   <tr>
     <td><%= merchant.name %></td>
+    <td>
+      <form action="/merchants/<%= merchant.id %>/delete" method="POST">
+        <input class="btn_action" type="submit" value="delete" />
+      </form>
+      <form action="/merchants/<%= merchant.id %>/update" method="GET">
+        <input class="btn_action" type="submit" value="update" />
+      </form>
+    </td>
   </tr>
   <% end %>
 </table>
+
+<p class="btn_wrapper">
+  <a class="btn_action" href="/transactions">To Transactions</a>
+</p>
