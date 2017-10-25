@@ -46,39 +46,57 @@ class Transaction
     return results.first["sum"]
   end
 
-  def self.total_by_tag_type(type)
-    sql = "SELECT SUM(transactions.amount)
+  # def self.total_by_tag_type(type)
+  #   sql = "SELECT SUM(transactions.amount)
+  #   FROM transactions
+  #   INNER JOIN tags
+  #   ON transactions.tag_id = tags.id
+  #   WHERE item_type = $1"
+  #   values = [type.capitalize]
+  #   results = SqlRunner.run(sql, values)
+  #   return results.first["sum"]
+
+  # end
+
+  def self.total_by_tag_type(id)
+    sql = "SELECT SUM(amount)
     FROM transactions
-    INNER JOIN tags
-    ON transactions.tag_id = tags.id
-    WHERE item_type = $1"
-    values = [type.capitalize]
-    results = SqlRunner.run(sql, values)
-    return results.first["sum"]
-
+    WHERE tag_id = $1"
+    values = [id]
+    result = SqlRunner.run(sql, values)
+    return result.first["sum"].to_i
   end
 
-  def self.total_by_tag_name(name)
-    sql = "SELECT SUM(transactions.amount)
-    FROM tags
-    INNER JOIN transactions
-    ON transactions.tag_id = tags.id
-    WHERE name = $1"
-    values = [name.capitalize]
-    results = SqlRunner.run(sql, values)
-    return results.first["sum"]
+  # def self.total_by_tag_name(name)
+  #   sql = "SELECT SUM(transactions.amount)
+  #   FROM tags
+  #   INNER JOIN transactions
+  #   ON transactions.tag_id = tags.id
+  #   WHERE name = $1"
+  #   values = [name.capitalize]
+  #   results = SqlRunner.run(sql, values)
+  #   return results.first["sum"]
+  # end
+
+  def self.total_by_merchant(id)
+    sql = "SELECT sum(amount)
+    FROM transactions
+    WHERE merchant_id = $1"
+    values = [id]
+    result = SqlRunner.run(sql, values)
+    return result.first["sum"].to_i
   end
 
-  def self.total_by_merchant(name)
-    sql = "SELECT SUM(transactions.amount)
-    FROM merchants
-    INNER JOIN transactions
-    ON transactions.merchant_id = merchants.id
-    WHERE name = $1"
-    values = [name.capitalize]
-    results = SqlRunner.run(sql, values)
-    return results.first["sum"]
-  end
+  # def self.total_by_merchant(name)
+  #   sql = "SELECT SUM(transactions.amount)
+  #   FROM merchants
+  #   INNER JOIN transactions
+  #   ON transactions.merchant_id = merchants.id
+  #   WHERE name = $1"
+  #   values = [name.capitalize]
+  #   results = SqlRunner.run(sql, values)
+  #   return results.first["sum"]
+  # end
 
   def merchant()
     sql = "SELECT * FROM merchants

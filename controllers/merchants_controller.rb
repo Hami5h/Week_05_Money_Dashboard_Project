@@ -1,9 +1,11 @@
 require('sinatra')
 require('sinatra/contrib/all')
 require_relative('../models/merchant.rb')
+require_relative('../models/transaction.rb')
 
 get '/merchants' do
   @merchants = Merchant.all()
+
   erb (:"merchants/index")
 end
 
