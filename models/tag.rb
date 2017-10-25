@@ -27,4 +27,25 @@ class Tag
     return results.map { |tag| Tag.new(tag) }
   end
 
+  def self.find(id)
+    sql = "SELECT * FROM tags
+    WHERE id = $1"
+    values = [id]
+    results = SqlRunner.run(sql, values)
+    return Tags.new(results.first)
+  end
+
+  def delete()
+    sql = "DELETE FROM tags
+    WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM tags"
+    values = []
+    SqlRunner.run(sql, values)
+  end
+
 end
