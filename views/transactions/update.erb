@@ -1,23 +1,24 @@
 <form method="post" action="/transactions/<%= @transactions.id %>/update">
 
-  <label for="merchant-amount"> Amount Spent: </label>
+  <label for="item-cost"> Amount Spent: </label>
   <input
   type="text"
   name="amount"
-  id="merchant-amount"
+  value="<%= @transactions.amount %>"
+  id="item-cost"
   />
 
   <label for="merchant-id"> Merchant </label>
   <select id="merchant-id" name="merchant_id">
     <% @merchants.each do |merchant| %>
-      <option value="<%= merchant.id %>"> <%= merchant.name %></option>
+      <option <%= "selected" if merchant.id == @transactions.merchant_id %> value="<%= merchant.id %>"> <%= merchant.name %></option>
     <%end%>
   </select>
 
   <label for="tag-id"> Type </label>
   <select id="tag-id" name="tag_id">
     <% @tags.each do |tag| %>
-    <option value="<%= tag.id %>"> <%= tag.item_type %></option>
+    <option <%= "selected" if tag.id == @transactions.tag_id %> value="<%= tag.id %>"> <%= tag.item_type %></option>
     <%end%>
   </select>
 
@@ -25,6 +26,7 @@
   <input
   type="text"
   name="item_name"
+  value="<%= @transactions.item_name %>"
   id="purchased-item"
   />
 
