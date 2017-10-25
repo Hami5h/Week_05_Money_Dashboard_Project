@@ -28,3 +28,9 @@ post '/merchants/:id/update' do
   Merchant.new(params).update
   redirect to("/merchants")
 end
+
+post '/merchants/:id/delete' do
+  @merchants = Merchant.find(params[:id])
+  @merchants.delete
+  redirect to("/merchants")
+end

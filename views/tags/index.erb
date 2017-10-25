@@ -1,0 +1,33 @@
+<h1>Item Types</h1>
+
+<p class="btn_wrapper">
+  <a class="btn_action" href="/tags/new">New Item Type</a>
+</p>
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Maintenance</th>
+  </tr>
+  <% for tag in @tags %>
+  <tr>
+    <td><%= tag.item_type %></td>
+    <td>
+      <form action="/tags/<%= tag.id %>/delete" method="POST">
+        <input class="btn_action" type="submit" value="delete" />
+      </form>
+      <form action="/tags/<%= tag.id %>/update" method="GET">
+        <input class="btn_action" type="submit" value="update" />
+      </form>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
+<p class="btn_wrapper">
+  <a class="btn_action" href="/transactions">To Transactions</a>
+</p>
+
+<p class="btn_wrapper">
+  <a class="btn_action" href="/merchants">To Merchants</a>
+</p>

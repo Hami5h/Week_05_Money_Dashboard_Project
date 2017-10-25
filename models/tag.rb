@@ -32,7 +32,15 @@ class Tag
     WHERE id = $1"
     values = [id]
     results = SqlRunner.run(sql, values)
-    return Tags.new(results.first)
+    return Tag.new(results.first)
+  end
+
+  def update()
+    sql = "UPDATE tags
+    SET (item_type) = ($1)
+    WHERE ID = $2"
+    values = [@item_type, @id]
+    SqlRunner.run(sql,values)
   end
 
   def delete()

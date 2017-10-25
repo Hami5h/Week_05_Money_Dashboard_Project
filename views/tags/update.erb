@@ -1,0 +1,13 @@
+<form method="post" action="/tags/<%= @tags.id %>/update">
+
+  <label for="item-type"> Item Type: </label>
+  <input
+  type="text"
+  name="item_type"
+  value="<%= @tags.item_type %>"
+  id="item_type"
+  />
+
+<input type="submit" value="Apply">
+
+</form>
