@@ -23,9 +23,9 @@ post '/transactions' do
   erb(:"transactions/create")
 end
 
-get '/transactions/:type' do
-  @transactions = Transaction.tag_type(params[:type])
-  @total = Transaction.total_by_tag_type(params[:type])
+get '/transactions/:type_id' do
+  @transactions = Transaction.tag_type(params[:type_id])
+  @total = Transaction.total_by_tag_type(params[:type_id])
   erb (:"transactions/filtered")
 end
 

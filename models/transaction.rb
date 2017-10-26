@@ -114,16 +114,25 @@ class Transaction
     return Tag.new( results.first )
   end
 
-  def self.tag_type(type)
-    sql = "SELECT transactions.*
+  def self.tag_type(id)
+    sql = "SELECT *
     FROM transactions
-    INNER JOIN tags
-    ON transactions.tag_id = tags.id
-    WHERE item_type = $1"
-    values = [type.capitalize]
+    WHERE tag_id = $1"
+    values = [id]
     results = SqlRunner.run(sql, values)
     return results.map { |transaction| Transaction.new(transaction) }
   end
+  #
+  #
+  #   sql = "SELECT transactions.*
+  #   FROM transactions
+  #   INNER JOIN tags
+  #   ON transactions.tag_id = tags.id
+  #   WHERE item_type = $1"
+  #   values = [type.capitalize]
+  #   results = SqlRunner.run(sql, values)
+  #   return results.map { |transaction| Transaction.new(transaction) }
+  # end
 
   def update()
     sql = "UPDATE transactions

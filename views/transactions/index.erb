@@ -27,7 +27,7 @@
       <td><%= transaction.merchant.name %></td>
       <td><%= transaction.item_name %></td>
       <td>
-          <a class="btn_action" href="/transactions/<%= transaction.tag.item_type %>"><%= transaction.tag.item_type %></a>
+          <a class="btn_action" href="/transactions/<%= transaction.tag_id %>"><%= transaction.tag.item_type %></a>
       </td>
       <td> £<%= transaction.amount %></td>
     </tr>
