@@ -155,4 +155,11 @@ class Transaction
     SqlRunner.run(sql, values)
   end
 
+  def self.reduce_total()
+    sql = "SELECT * FROM transactions"
+    values = []
+    transactions = SqlRunner.run( sql, values )
+    return transactions.reduce(0) { |acc, transaction| acc + transaction['amount'].to_i }
+  end
+
 end
