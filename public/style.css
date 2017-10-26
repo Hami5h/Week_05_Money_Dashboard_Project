@@ -59,6 +59,10 @@ tr:nth-child(odd) {
   background-color: #84DBFA;
 }
 
+tr:hover{
+  background: #ed7bce;
+}
+
 tfoot td {
   background-color: #EEAD49;
   color: #000;
