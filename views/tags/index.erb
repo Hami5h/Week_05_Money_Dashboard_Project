@@ -7,11 +7,13 @@
 <table>
   <tr>
     <th>Type</th>
+    <th>Spend per type</th>
     <th>Maintenance</th>
   </tr>
   <% for tag in @tags %>
   <tr>
     <td><%= tag.item_type %></td>
+    <td>£<%= Transaction.total_by_tag_type(tag.id) %></td>
     <td>
       <form action="/tags/<%= tag.id %>/delete" method="POST">
         <input class="btn_action" type="submit" value="delete" />
