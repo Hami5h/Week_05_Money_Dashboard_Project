@@ -88,6 +88,7 @@ class Transaction
     return result.first["sum"].to_i
   end
 
+#   THE CODE BELOW WORKS BUT HAS BEEN REFARCTORED AS ABOVE
   # def self.total_by_merchant(name)
   #   sql = "SELECT SUM(transactions.amount)
   #   FROM merchants
@@ -160,7 +161,7 @@ class Transaction
     sql = "SELECT * FROM transactions"
     values = []
     transactions = SqlRunner.run( sql, values )
-    return transactions.reduce(0) { |acc, transaction| acc + transaction['amount'].to_i }
+    return transactions.reduce(0) { |sum, transaction| sum + transaction['amount'].to_i }
   end
 
   def self.budget_limit()

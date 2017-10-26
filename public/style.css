@@ -1,6 +1,6 @@
 body {
   background: linear-gradient(45deg, #3D9970, #D8DEDA) no-repeat;
-  height: 96vh;
+  height: 98vh;
   background-size: cover;
   background-position: center;
 }
@@ -27,6 +27,15 @@ nav ul li a {
 
 h1 {
   color: #fff;
+  font-size: 48px;
+}
+
+.container {
+  margin-left: 20px;
+}
+
+.container p {
+  font-size: 30px;
 }
 
 .title {
