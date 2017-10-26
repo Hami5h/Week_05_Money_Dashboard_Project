@@ -3,7 +3,7 @@ require_relative('../db/sql_runner')
 class Transaction
 
   attr_reader(:id)
-  attr_accessor(:amount, :item_name, :merchant_id, :tag_id)
+  attr_accessor(:amount, :item_name, :merchant_id, :tag_id, :budget)
 
   def initialize( options )
     @id = options['id'].to_i if options['id']
@@ -11,6 +11,7 @@ class Transaction
     @item_name = options['item_name']
     @merchant_id = options['merchant_id'].to_i
     @tag_id = options['tag_id'].to_i
+    @budget = 3000
   end
 
   def save()
@@ -43,7 +44,7 @@ class Transaction
     sql = "SELECT SUM(amount) FROM transactions"
     values = []
     results = SqlRunner.run(sql, values)
-    return results.first["sum"]
+    return results.first["sum"].to_i
   end
 
   # def self.total_by_tag_type(type)
@@ -160,6 +161,10 @@ class Transaction
     values = []
     transactions = SqlRunner.run( sql, values )
     return transactions.reduce(0) { |acc, transaction| acc + transaction['amount'].to_i }
+  end
+
+  def self.budget_limit()
+    return 3000 - Transaction.total()
   end
 
 end
