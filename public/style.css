@@ -5,6 +5,26 @@ body {
   background-position: center;
 }
 
+nav {
+  text-align: right;
+}
+
+nav ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  font-size: 25px;
+  padding: 10px 20px;
+  background-color: #CFD8DC;
+}
+
 h1 {
   color: #fff;
 }
@@ -57,4 +77,25 @@ tfoot td {
 
 form {
   display: inline;
+}
+
+/* form controls*/
+
+label, input, select {
+  display: block;
+}
+
+label {
+  margin: 20px 0 0 0;
+}
+
+.btn{
+  margin: 20px 0 0 0;
+}
+td input {
+  display: inline;
+}
+
+.data-form {
+  margin-left: 50px;
 }

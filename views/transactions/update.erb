@@ -1,35 +1,39 @@
-<form method="post" action="/transactions/<%= @transactions.id %>/update">
+<h1>Update a Transaction</h1>
 
-  <label for="item-cost"> Amount Spent: </label>
-  <input
-  type="text"
-  name="amount"
-  value="<%= @transactions.amount %>"
-  id="item-cost"
-  />
+<div class="data-form">
+  <form method="post" action="/transactions/<%= @transactions.id %>/update">
 
-  <label for="merchant-id"> Merchant </label>
-  <select id="merchant-id" name="merchant_id">
-    <% @merchants.each do |merchant| %>
-      <option <%= "selected" if merchant.id == @transactions.merchant_id %> value="<%= merchant.id %>"> <%= merchant.name %></option>
-    <%end%>
-  </select>
+    <label for="item-cost"> Amount Spent: </label>
+    <input
+    type="text"
+    name="amount"
+    value="<%= @transactions.amount %>"
+    id="item-cost"
+    />
 
-  <label for="tag-id"> Type </label>
-  <select id="tag-id" name="tag_id">
-    <% @tags.each do |tag| %>
-    <option <%= "selected" if tag.id == @transactions.tag_id %> value="<%= tag.id %>"> <%= tag.item_type %></option>
-    <%end%>
-  </select>
+    <label for="merchant-id"> Merchant </label>
+    <select id="merchant-id" name="merchant_id">
+      <% @merchants.each do |merchant| %>
+        <option <%= "selected" if merchant.id == @transactions.merchant_id %> value="<%= merchant.id %>"> <%= merchant.name %></option>
+      <%end%>
+    </select>
 
-  <label for="purchased-item"> Product: </label>
-  <input
-  type="text"
-  name="item_name"
-  value="<%= @transactions.item_name %>"
-  id="purchased-item"
-  />
+    <label for="tag-id"> Type </label>
+    <select id="tag-id" name="tag_id">
+      <% @tags.each do |tag| %>
+      <option <%= "selected" if tag.id == @transactions.tag_id %> value="<%= tag.id %>"> <%= tag.item_type %></option>
+      <%end%>
+    </select>
 
-  <input type="submit" value="Apply">
+    <label for="purchased-item"> Product: </label>
+    <input
+    type="text"
+    name="item_name"
+    value="<%= @transactions.item_name %>"
+    id="purchased-item"
+    />
 
-</form>
+    <input class="btn" type="submit" value="Apply">
+
+  </form>
+</div>

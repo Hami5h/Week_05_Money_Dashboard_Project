@@ -6,9 +6,9 @@
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Total Spent</th>
-    <th>Maintenance</th>
+    <th scope="col">Name</th>
+    <th scope="col">Total Spent</th>
+    <th scope="col">Maintenance</th>
   </tr>
   <% for merchant in @merchants %>
   <tr>
@@ -25,11 +25,3 @@
   </tr>
   <% end %>
 </table>
-
-<p class="btn_wrapper">
-  <a class="btn_action" href="/transactions">To Transactions</a>
-</p>
-
-<p class="btn_wrapper">
-  <a class="btn_action" href="/tags">To Item Types</a>
-</p>

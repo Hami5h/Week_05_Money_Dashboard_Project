@@ -6,9 +6,9 @@
 
 <table>
   <tr>
-    <th>Type</th>
-    <th>Spend per type</th>
-    <th>Maintenance</th>
+    <th scope="col">Type</th>
+    <th scope="col">Spend per type</th>
+    <th scope="col">Maintenance</th>
   </tr>
   <% for tag in @tags %>
   <tr>
@@ -25,11 +25,3 @@
   </tr>
   <% end %>
 </table>
-
-<p class="btn_wrapper">
-  <a class="btn_action" href="/transactions">To Transactions</a>
-</p>
-
-<p class="btn_wrapper">
-  <a class="btn_action" href="/merchants">To Merchants</a>
-</p>

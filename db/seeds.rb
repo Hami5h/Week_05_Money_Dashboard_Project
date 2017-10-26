@@ -70,5 +70,21 @@ transaction4 = Transaction.new({
 })
 transaction4.save()
 
+transaction5 = Transaction.new({
+  'amount' => 120,
+  'item_name' => "Television",
+  'merchant_id' => merchant1.id,
+  'tag_id' => tag1.id,
+})
+transaction5.save()
+
+transaction6 = Transaction.new({
+  'amount' => 18,
+  'item_name' => "Skin Cream",
+  'merchant_id' => merchant2.id,
+  'tag_id' => tag2.id,
+})
+transaction6.save()
+
 binding.pry
 nil
