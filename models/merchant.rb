@@ -56,13 +56,13 @@ class Merchant
     SqlRunner.run(sql, values)
   end
 
-  def self.total_spent(id)
-    sql = "SELECT SUM(amount)
-    FROM transactions
-    WHERE merchant_id = $1"
-    values = [id]
-    results = SqlRunner.run(sql, values)
-    return results.first["sum"]
-  end
+  # def self.total_spent(id)
+  #   sql = "SELECT SUM(amount)
+  #   FROM transactions
+  #   WHERE merchant_id = $1"
+  #   values = [id]
+  #   results = SqlRunner.run(sql, values)
+  #   return results.first["sum"]
+  # end
 
 end

@@ -7,11 +7,13 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Total Spent</th>
     <th>Maintenance</th>
   </tr>
   <% for merchant in @merchants %>
   <tr>
     <td><%= merchant.name %></td>
+    <td>£<%= Transaction.total_by_merchant(merchant.id) %></td>
     <td>
       <form action="/merchants/<%= merchant.id %>/delete" method="POST">
         <input class="btn_action" type="submit" value="delete" />
