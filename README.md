@@ -29,6 +29,7 @@ You must be able to create new Transactions ( which should include a merchant na
 - Any other ideas you might come up with
 
 ## My Experience:
+
 Started off by having a group planning session where we captured and discussed viable methods for completing the tasks.
 User needs, class diagrams, and table diagrams were drawn on a whiteboard and we discussed the pros and cons of each suggested solution.
 We ended up agreeing on creating three tables as follows:
@@ -50,5 +51,30 @@ I then decided it would be good to auto-populate the form with existing transact
 
 I then created all the CRUD functions for the merchant and tag models. The functionality was then added to their respective controllers. Again, I had some minor hiccups due to typos, but I eventually managed to get all the information displaying and updating successfully in my browser.
 
-## GitHub Repo:
-https://github.com/Hami5h/Week_05_Money_Dashboard_Project
+##Setting up
+
+- ‘brew install ruby’
+- ‘gem install sinatra sinatra-contrib’
+- Install Postgres on your machine.
+- Clone/Download repository to a destination of your choice.
+- Create dashboard database.
+- Populate the tables/database by running the 'seeds.rb' file in terminal.
+- Run the 'app.rb' file, and open your browser at 'localhost:4567'
+
+## Design  
+
+The design intent was to keep it as simple as possible and maintain accessibility.
+A simple tabular layout with a comfortable colour scheme was chosen for all the pages.
+A large font size was used where possible, along with row highlighting in the
+tables.
+
+## Outcome
+The MVP was achieved, and a basic hard coded budget limit included. I therefore
+achieved what I set out to do in this respect, but would've liked a bit more time to include additional features.
+My main aim - as per project brief - was to consolidate all that I had been taught over the past few weeks, and gain a better understanding of Ruby and Databases. I feel that
+over the course of the project, and by working through various problems, that my understanding has improved, and the goal has largely been met.
+
+## Moving Forward
+
+At some point, I would like to revisit this app and add a user table, which would allow for it to be personalised. E.g. This could include a user name and password functionality.
+I would also like to revisit the extensions which I didn't have time to complete, and set a date for each transaction.
