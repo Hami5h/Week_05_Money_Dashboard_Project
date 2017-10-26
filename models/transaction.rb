@@ -56,9 +56,9 @@ class Transaction
   #   values = [type.capitalize]
   #   results = SqlRunner.run(sql, values)
   #   return results.first["sum"]
-
   # end
 
+#   THE CODE ABOVE WORKS BUT HAS BEEN REFACTORED AS PER CODE BELOW
   def self.total_by_tag_type(id)
     sql = "SELECT SUM(amount)
     FROM transactions
@@ -78,6 +78,8 @@ class Transaction
   #   results = SqlRunner.run(sql, values)
   #   return results.first["sum"]
   # end
+# THE CODE ABOVE WORKED BUT IS NO LONGER REQUIRED SINCE TABLE MODIFICATION REMOVED
+# THE TAG_NAME FROM TAGS TABLE
 
   def self.total_by_merchant(id)
     sql = "SELECT sum(amount)
@@ -125,7 +127,8 @@ class Transaction
     return results.map { |transaction| Transaction.new(transaction) }
   end
   #
-  #
+  # => THE CODE BELOW WORKS BUT HAS BEN REFACTORED AS PER CODE ABOVE
+  # def self.tag_type(type)
   #   sql = "SELECT transactions.*
   #   FROM transactions
   #   INNER JOIN tags
@@ -157,12 +160,14 @@ class Transaction
     SqlRunner.run(sql, values)
   end
 
-  def self.reduce_total()
-    sql = "SELECT * FROM transactions"
-    values = []
-    transactions = SqlRunner.run( sql, values )
-    return transactions.reduce(0) { |sum, transaction| sum + transaction['amount'].to_i }
-  end
+  # def self.reduce_total()
+  #   sql = "SELECT * FROM transactions"
+  #   values = []
+  #   transactions = SqlRunner.run( sql, values )
+  #   return transactions.reduce(0) { |sum, transaction| sum + transaction['amount'].to_i }
+  # end
+  #   THE CODE ABOVE WORKS BUT IS NOT REQUIRED SINCE THERE IS ALREADY A SELF.TOTAL METHOD
+  #   IT WAS JUST CREATED FOR EXPERIMENTATION AS PART OF MY PROJECT
 
   def self.budget_limit()
     return 3000 - Transaction.total()
