@@ -56,6 +56,7 @@ class Merchant
     SqlRunner.run(sql, values)
   end
 
+#   THE CODE BELOW WORKS BUT IS REDUNDANT SINCE IT IS ALSO WITHIN THE TRANSACTIONS METHOD.
   # def self.total_spent(id)
   #   sql = "SELECT SUM(amount)
   #   FROM transactions

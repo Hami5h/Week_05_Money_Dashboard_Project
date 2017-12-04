@@ -159,14 +159,19 @@ class Transaction
     SqlRunner.run(sql, values)
   end
 
+# Get all transactions and loop through the array of hashes returned from sql.
+# Sum the value of each transaction 'amount' where 'amount' is the hash key
+# and reduce the array to one value. Return the value/total amount.
+
   # def self.reduce_total()
   #   sql = "SELECT * FROM transactions"
   #   values = []
   #   transactions = SqlRunner.run( sql, values )
   #   return transactions.reduce(0) { |sum, transaction| sum + transaction['amount'].to_i }
   # end
-  #   THE CODE ABOVE WORKS BUT IS NOT REQUIRED SINCE THERE IS ALREADY A SELF.TOTAL METHOD
-  #   IT WAS JUST CREATED FOR EXPERIMENTATION AS PART OF MY PROJECT
+  #   THE CODE ABOVE WORKS BUT IS NOT REQUIRED SINCE THERE IS
+  #   ALREADY A SELF.TOTAL METHOD IT WAS JUST CREATED FOR
+  #   EXPERIMENTATION AS PART OF MY PROJECT.
 
   def self.budget_limit()
     return 3000 - Transaction.total()
